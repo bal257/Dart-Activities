@@ -36,4 +36,4 @@ do{
 } while (flag == 1);
 
   print('\nHello, $name!');
-} //hi
+} 
