@@ -38,7 +38,7 @@ void main()
   print('\n\x1B[34m===LOGIN===\x1B[0m\n');
 
 do{
-  stdout.write('\x1B[33mEnter your username: \x1B[0m');
+  stdout.write('\x1B[33mEnter your  username: \x1B[0m');
   String? logname = stdin.readLineSync();
 
   stdout.write('\x1B[33mEnter your password: \x1B[0m');
@@ -52,7 +52,7 @@ do{
   }
   else
   {
-    print('\x1B[31mLogin Failed! Please check your username and password.\x1B[0m');
+    print('\n\x1B[31mLogin Failed! Please check your username and password.\x1B[0m\n');
     flag = 1;
   }
 } while (flag == 1);
