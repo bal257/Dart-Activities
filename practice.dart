@@ -28,9 +28,25 @@ void main()
     print("Password must be at least 8 characters long!");
     continue;
   }
-  
+  else if(!pass.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]')) )
+  {
+    print("Password must contain at least one special character!");
+    continue; // Prompt for password again
+  }
+  else if(!pass.contains(new RegExp(r'[A-Z]')))
+  {
+    print("Password must contain at least one uppercase letter!");
+    continue; // Prompt for password again
+  }
+    else if(!pass.contains(new RegExp(r'[a-z]')))
+  {
+    print("Password must contain at least one lowercase letter!");
+    continue; // Prompt for password again
+  }
+
  
- } while (name == null || name.isEmpty || pass == null || pass.isEmpty || pass.length < 8);
+ } while (name == null || name.isEmpty || pass == null || pass.isEmpty || pass.length < 8 || !pass.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]')) ||
+ !pass.contains(new RegExp(r'[A-Z]')) || !pass.contains(new RegExp(r'[a-z]')));
   
   
   print('\n\x1B[32mRegistration successful for user:\x1B[0m $name');
