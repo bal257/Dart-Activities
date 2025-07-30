@@ -13,34 +13,34 @@ void main()
   name = getUsername(name);
 
   if (name == null || name.isEmpty) {
-    print('\x1B[31mUsername cannot be empty!\x1B[0m');
+    print('\x1B[31mUsername cannot be empty!\n\x1B[0m');
     continue; // Prompt for username again
   }
 
   pass = getPassword(pass);
 
   if (pass == null || pass.isEmpty) {
-    print('\x1B[31mPassword cannot be empty!\x1B[0m');
+    print('\x1B[31mPassword cannot be empty!\n\x1B[0m');
     continue; // Prompt for password again
   }
   else if(pass.length < 8)
   {
-    print("Password must be at least 8 characters long!");
+    print("Password must be at least 8 characters long!\n");
     continue;
   }
   else if(!pass.contains(new RegExp(r'[!@#$%^&*(),.?":{}|<>]')) )
   {
-    print("Password must contain at least one special character!");
+    print("Password must contain at least one special character!\n");
     continue; // Prompt for password again
   }
   else if(!pass.contains(new RegExp(r'[A-Z]')))
   {
-    print("Password must contain at least one uppercase letter!");
+    print("Password must contain at least one uppercase letter!\n");
     continue; // Prompt for password again
   }
     else if(!pass.contains(new RegExp(r'[a-z]')))
   {
-    print("Password must contain at least one lowercase letter!");
+    print("Password must contain at least one lowercase letter!\n");
     continue; // Prompt for password again
   }
 
@@ -68,7 +68,7 @@ do{
   }
   else
   {
-    print('\n\x1B[31mLogin Failed! Please check your username and password.\x1B[0m\n');
+    print('\n\x1B[31mLogin Failed! Please check your username and password.\n\x1B[0m\n');
     flag = 1;
   }
 } while (flag == 1);
