@@ -5,7 +5,7 @@ void main()
   int flag = 0;
   String? name , pass;
 
-  print('\n\x1B[34m===REGISTRATION===\x1B[0m\n');
+  print('\n\x1B[34m ===REGISTRATION===\x1B[0m\n');
 
  // name = getUsername(name);
 
@@ -51,7 +51,7 @@ void main()
   
   print('\n\x1B[32mRegistration successful for user:\x1B[0m $name');
 
-  print('\n\x1B[34m===LOGIN===\x1B[0m\n');
+  print('\n\x1B[34m     ===LOGIN===\x1B[0m\n');
 
 do{
   stdout.write('\x1B[33mEnter your  username: \x1B[0m');
@@ -62,7 +62,7 @@ do{
 
   if(logname == name && logpass == pass)
   {
-    print('\x1B[32mLogin Successfully!\x1B[0m');
+    print('\n\x1B[32mLogin Successfully!\x1B[0m');
     flag = 0;
     break;
   }
