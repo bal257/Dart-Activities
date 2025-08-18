@@ -3,9 +3,9 @@ import 'dart:io';
 List<TeamMember> teamMembers = [];
 
 List<Role> roles = [
-  Role("UI Design", "Design the user interfaces and user experience."),
+  Role("UI Design", "Designs the interface and user experience."),
   Role("API Development", "Develops the backend APIs and server logic."),
-  Role("Database Setup", "Configures and manages the database"),
+  Role("Database Setup", "Configures and manages the database."),
   Role("System Development", "Implements the core system functionality."),
   Role("Testing", "Ensures product quality through testing.")
 ];
@@ -60,7 +60,7 @@ void inputTeamMembers()
   
    while (num < 3 || num > 5) 
    {
-    stdout.write('How many team members (3-5)?: ');
+    stdout.write('\nHow many team members? (3-5): ');
     var input = stdin.readLineSync();
 
     if (input != null && input.isNotEmpty) 
@@ -68,12 +68,12 @@ void inputTeamMembers()
       num = int.parse(input);
       if (num < 3 || num > 5) 
       {
-        print('Number must be between 3 and 5!');
+        print('\x1B[31mNumber must be between 3 and 5!\x1B[0m');
       }
     } 
     else 
     {
-      print("You must enter a number.");
+      print("\x1B[31mYou must enter a number.\x1B[0m");
     }
   }
 
@@ -88,10 +88,20 @@ void inputTeamMembers()
       name = (nameInput ?? "");
       if (name.trim().isEmpty) 
       {
-        print("Name cannot be empty.");
+        print("\x1B[31mName cannot be empty.\x1B[0m\n");
       }
+      else if (teamMembers.any((member) => member.name == name)) 
+      {
+        print("\x1B[31mThis name is already taken. Please enter a different name.\x1B[0m\n");
+        name = "";
+      }
+      else if (int.tryParse(name) != null) 
+      {
+        print("\x1B[31mName cannot be a number. Please enter a valid name.\x1B[0m\n");
+        name = "";
+      }
+      teamMembers.add(TeamMember(name));
     }
-    teamMembers.add(TeamMember(name));
   }
 }
 
@@ -120,9 +130,9 @@ void assignRoles()
     var member = teamMembers[i % teamMembers.length];
     var role = roles[i];
     member.assignedRoles.add(role);
-    String assignmentMsg = "${role.title} assigned to ${member.name}";
-    lastAssigned.store(assignmentMsg);
-    print(assignmentMsg);
+    String message = "${role.title} assigned to ${member.name}";
+    lastAssigned.store(message);
+    print(message);
   }
 }
 
@@ -133,7 +143,7 @@ void viewRoleAssignments()
   {
     if (member.assignedRoles.isEmpty) 
     {
-      print("${member.name}: No roles assigned");
+      print("\x1B[31m${member.name}: No roles assigned.\x1B[0m");
     } 
     else 
     {
@@ -147,11 +157,11 @@ void viewRoleAssignments()
 
 void viewLastAssigned() 
 {
-  print("\nLast Role Assigned:");
+  print("\nLast Role Assigned: ");
   final value = lastAssigned.retrieve();
   if (value == null) 
   {
-    print('No role has been assigned yet.');
+    print('\x1B[31mNo role has been assigned yet.\x1B[0m');
   } 
   else 
   {
@@ -163,7 +173,7 @@ void showMenu()
 {
   while (true) 
   {
-    print('\n===Scrum Logic Menu===');
+    print('\n\x1B[34m===Scrum Logic Menu===\x1B[0m');
     print('1. View Team Members');
     print('2. View Roles');
     print('3. Assign Roles');
@@ -171,7 +181,7 @@ void showMenu()
     print('5. View Last Role Assigned');
     print('6. Exit');
     
-    stdout.write('Enter your choice: ');
+    stdout.write('\nEnter your choice: ');
     int choice = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
 
     switch (choice) 
@@ -192,10 +202,10 @@ void showMenu()
         viewLastAssigned();
         break;
       case 6:
-        print("Goodbye!");
+        print("\n\x1B[32mGoodbye!\x1B[0m");
         return;
       default:
-        print("Invalid choice.");
+        print("\x1B[31mInvalid choice.\x1B[0m");
     }
   }
 }
