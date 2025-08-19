@@ -125,7 +125,7 @@ void assignRoles()
     var member = teamMembers[i % teamMembers.length];
     var role = roles[i];
     member.assignedRoles.add(role);
-    String message = "${role.title} assigned to ${member.name}";
+    String message = "${role.title} is assigned to ${member.name}";
     lastAssigned.store(message);
     print(message);
   }
