@@ -90,11 +90,6 @@ void inputTeamMembers()
       {
         print("\x1B[31mName cannot be empty.\x1B[0m\n");
       }
-      else if (teamMembers.any((member) => member.name == name)) 
-      {
-        print("\x1B[31mThis name is already taken. Please enter a different name.\x1B[0m\n");
-        name = "";
-      }
       else if (int.tryParse(name) != null) 
       {
         print("\x1B[31mName cannot be a number. Please enter a valid name.\x1B[0m\n");
